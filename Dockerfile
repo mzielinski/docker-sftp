@@ -1,5 +1,5 @@
 FROM  oberthur/docker-ubuntu:16.04
-MAINTAINER Adrian Dvergsdal [atmoz.net]
+MAINTAINER  anonymous
 
 # - Install packages
 # - OpenSSH needs /var/run/sshd to run
