@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM  oberthur/docker-ubuntu:16.04
 MAINTAINER Adrian Dvergsdal [atmoz.net]
 
 # - Install packages
