@@ -2,7 +2,7 @@
 set -e
 export DEBIAN_FRONTEND=noninteractive
 
-userConfPath="/etc/sftp-users.conf"
+userConfPath="/etc/users/sftp-users.conf"
 userConfFinalPath="/var/run/sftp-users.conf"
 
 function printHelp() {
@@ -13,7 +13,7 @@ function printHelp() {
 
 function printReadme() {
     cat /README.md
-    echo "TIP: Read this in HTML format here: https://github.com/atmoz/sftp"
+    echo "TIP: Read this in HTML format here: https://github.com/oberthur/sftp"
 }
 
 function createUser() {
@@ -81,7 +81,7 @@ function createUser() {
             dirPath=/home/$user/$dirPath
             echo "Creating and/or setting permissions on $dirPath"
             mkdir -p $dirPath
-            chown -R $user:users $dirPath
+            chown -R $user: $dirPath
         done
     fi
 }

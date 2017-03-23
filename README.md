@@ -31,7 +31,7 @@ This is an automated build linked with the [debian](https://hub.docker.com/_/deb
 ## Simplest docker run example
 
 ```
-docker run -p 22:22 -d atmoz/sftp foo:pass:::upload
+docker run -p 22:22 -d oberthur/sftp foo:pass:::upload
 ```
 
 User "foo" with password "pass" can login with sftp and upload files to a folder called "upload". No mounted directories or custom UID/GID. Later you can inspect the files and use `--volumes-from` to mount them somewhere else (or see next example).
@@ -45,7 +45,7 @@ docker run \
     -v /host/upload:/home/foo/upload \
     -v /host/ssh_host_rsa_key:/etc/ssh/ssh_host_rsa_key \
     -v /host/ssh_host_rsa_key.pub:/etc/ssh/ssh_host_rsa_key.pub \
-    -p 2222:22 -d atmoz/sftp \
+    -p 2222:22 -d oberthur/sftp \
     foo:pass:1001
 ```
 
@@ -53,7 +53,7 @@ docker run \
 
 ```
 sftp:
-    image: atmoz/sftp
+    image: oberthur/sftp
     volumes:
         - /host/upload:/home/foo/upload
         - /host/ssh_host_rsa_key:/etc/ssh/ssh_host_rsa_key
@@ -77,7 +77,7 @@ docker run \
     -v mySftpVolume:/home \
     -v /host/ssh_host_rsa_key:/etc/ssh/ssh_host_rsa_key \
     -v /host/ssh_host_rsa_key.pub:/etc/ssh/ssh_host_rsa_key.pub \
-    -p 2222:22 -d atmoz/sftp
+    -p 2222:22 -d oberthur/sftp
 ```
 
 /host/users.conf:
@@ -95,7 +95,7 @@ Add `:e` behind password to mark it as encrypted. Use single quotes if using ter
 ```
 docker run \
     -v /host/share:/home/foo/share \
-    -p 2222:22 -d atmoz/sftp \
+    -p 2222:22 -d oberthur/sftp \
     'foo:$1$0G2g0GSt$ewU0t6GXG15.0hWoOX8X9.:e:1001'
 ```
 
@@ -112,7 +112,7 @@ docker run \
     -v /host/id_rsa.pub:/home/foo/.ssh/keys/id_rsa.pub:ro \
     -v /host/id_other.pub:/home/foo/.ssh/keys/id_other.pub:ro \
     -v /host/share:/home/foo/share \
-    -p 2222:22 -d atmoz/sftp \
+    -p 2222:22 -d oberthur/sftp \
     foo::1001
 ```
 
